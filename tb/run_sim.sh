@@ -3,7 +3,7 @@
 set -e # in case of error, stop executting the script
 #set -x # show current command
 
-TOP=tb_jpeg
+TOP=JPEG_TB
 FILELIST=files.f
 
 # write and execute command
@@ -50,8 +50,8 @@ run_xsim()
         run_cmd xvhdl --2008 "$file"
     done < "$FILELIST"
 
-    run_cmd xelab "$TOP" -s "${TOP}_sim"
-    run_cmd xsim "${TOP}_sim" -runall
+    run_cmd xelab "$TOP" -s "${TOP}_sim" -debug all
+    run_cmd xsim "${TOP}_sim" -gui
 }
 
 SIM=${1:-ghdl}

@@ -82,4 +82,4 @@ vhdl/MDCTTB_PKG.vhd
 vhdl/GPL_V2_Image_pkg.vhd
 vhdl/ClkGen.vhd
 vhdl/HostBFM.vhd
-vhdl/JPEG_TB.vhd
+vhdl/JPEG_TB.VHD

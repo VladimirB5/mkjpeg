@@ -39,20 +39,20 @@ package GPL_V2_Image_Pkg is
   function Image(In_Image : Integer) return String;
   function Image(In_Image : Real) return String;
   function Image(In_Image : Std_uLogic) return String;
-  function Image(In_Image : Std_uLogic_Vector) return String;
+  --function Image(In_Image : Std_uLogic_Vector) return String;
   function Image(In_Image : Std_Logic_Vector) return String;
   function Image(In_Image : Signed) return String;
   function Image(In_Image : UnSigned) return String;
 
   function HexImage(InStrg  : String) return String;
   function HexImage(In_Image : Bit_Vector) return String;
-  function HexImage(In_Image : Std_uLogic_Vector) return String;
+  --function HexImage(In_Image : Std_uLogic_Vector) return String;
   function HexImage(In_Image : Std_Logic_Vector) return String;
   function HexImage(In_Image : Signed) return String;
   function HexImage(In_Image : UnSigned) return String;
 
   function DecImage(In_Image : Bit_Vector) return String;
-  function DecImage(In_Image : Std_uLogic_Vector) return String;
+  --function DecImage(In_Image : Std_uLogic_Vector) return String;
   function DecImage(In_Image : Std_Logic_Vector) return String;
   function DecImage(In_Image : Signed) return String;
   function DecImage(In_Image : UnSigned) return String;
@@ -127,15 +127,15 @@ package body GPL_V2_Image_Pkg is
     return W;
   end Image;
 
-  function Image(In_Image : Std_uLogic_Vector) return String is
-    variable L : Line;  -- access type
-    variable W : String(1 to In_Image'length) := (others => ' ');  
-  begin
-    IEEE.Std_Logic_Textio.WRITE(L, in_image);
-    W(L.all'range) := L.all;
-    Deallocate(L);
-    return W;
-  end Image;
+  --function Image(In_Image : Std_uLogic_Vector) return String is
+  --  variable L : Line;  -- access type
+  --  variable W : String(1 to In_Image'length) := (others => ' ');
+  --begin
+  --  IEEE.Std_Logic_Textio.WRITE(L, in_image);
+  --  W(L.all'range) := L.all;
+  --  Deallocate(L);
+  --  return W;
+  --end Image;
 
   function Image(In_Image : Std_Logic_Vector) return String is
     variable L : Line;  -- access type
@@ -203,10 +203,10 @@ package body GPL_V2_Image_Pkg is
     return HexImage(Image(In_Image));
   end HexImage;
 
-  function HexImage(In_Image : Std_uLogic_Vector) return String is
-  begin
-    return HexImage(Image(In_Image));
-  end HexImage;
+  --function HexImage(In_Image : Std_uLogic_Vector) return String is
+  --begin
+  --  return HexImage(Image(In_Image));
+  --end HexImage;
     
   function HexImage(In_Image : Std_Logic_Vector) return String is
   begin
@@ -238,19 +238,19 @@ package body GPL_V2_Image_Pkg is
     end if; 
   end DecImage;
   
-  function DecImage(In_Image : Std_uLogic_Vector) return String is
-    variable In_Image_v : Std_uLogic_Vector(In_Image'length downto 1)
-                              := In_Image;
-  begin
-    if In_Image'length > 31 then
-      assert False
-        report "Number too large for Integer, clipping to 31 bits"
-        severity Warning;
-       return Image(To_integer(Unsigned(In_Image_v(31 downto 1))));
-    else
-        return Image(To_integer(Unsigned(In_Image)));
-    end if; 
-  end DecImage;
+  --function DecImage(In_Image : Std_uLogic_Vector) return String is
+  --  variable In_Image_v : Std_uLogic_Vector(In_Image'length downto 1)
+  --                            := In_Image;
+  --begin
+  --  if In_Image'length > 31 then
+  --    assert False
+  --      report "Number too large for Integer, clipping to 31 bits"
+  --      severity Warning;
+  --     return Image(To_integer(Unsigned(In_Image_v(31 downto 1))));
+  --  else
+  --      return Image(To_integer(Unsigned(In_Image)));
+  --  end if;
+  --end DecImage;
   
   function DecImage(In_Image : Std_Logic_Vector) return String is
     variable In_Image_v : Std_Logic_Vector(In_Image'length downto 1)
