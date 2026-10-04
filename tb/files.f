@@ -3,83 +3,86 @@
 # ============================================================
 
 # common
-../design/common/JPEG_PKG.vhd
-../design/common/RAMZ.VHD
-../design/common/FIFO.vhd
-../design/common/SingleSM.vhd
-
-vhdl/DCT_TROM.vhd
-
-# buffifo
-../design/BufFifo/SUB_RAMZ.VHD
-../design/BufFifo/SUB_FIFO.vhd
-../design/BufFifo/BUF_FIFO.vhd
-
-# fdct
-../design/mdct/MDCT_PKG.vhd
-../design/mdct/ROMO.VHD
-../design/mdct/ROME.VHD
-../design/mdct/RAM.VHD
-../design/mdct/DBUFCTL.VHD
-../design/mdct/DCT1D.vhd
-../design/mdct/DCT2D.VHD
-../design/mdct/MDCT.VHD
-../design/mdct/FDCT.vhd
+../design/common/JPEG_PKG.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/common/RAMZ.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/common/FIFO.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/common/SingleSM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 #test
-../tb/vhdl/DCT_TROM.vhd
+vhdl/DCT_TROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+
+# buffifo
+../design/BufFifo/multiplier.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/BufFifo/SUB_RAMZ_LUT.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/BufFifo/SUB_RAMZ.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/BufFifo/BUF_FIFO.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+
+# fdct
+../design/mdct/FinitePrecRndNrst.v | - | - | xvlog
+../design/mdct/MDCT_PKG.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/ROMO.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/ROME.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/RAM.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/DBUFCTL.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/DCT1D.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/DCT2D.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/MDCT.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/mdct/FDCT.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+
+#test
+#../tb/vhdl/DCT_TROM.vhd
 
 # quantizer
 #../design/quantizer/ROMQ.vhd
 #../design/quantizer/s_divider.vhd
-../design/quantizer/ROMR.vhd
-../design/quantizer/r_divider.vhd
-../design/quantizer/QUANTIZER.vhd
-../design/quantizer/QUANT_TOP.VHD
+../design/quantizer/ROMR.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/quantizer/r_divider.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/quantizer/QUANTIZER.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/quantizer/QUANT_TOP.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # zigzag
-../design/zigzag/ZIGZAG.VHD
-../design/zigzag/ZZ_TOP.VHD
+../design/zigzag/ZIGZAG.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/zigzag/ZZ_TOP.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # rle
-../design/rle/RleDoubleFifo.vhd
-../design/rle/RLE.VHD
-../design/rle/RLE_TOP.VHD
+../design/rle/RleDoubleFifo.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/rle/RLE.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/rle/RLE_TOP.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # huffman
-../design/huffman/DoubleFifo.vhd
-../design/huffman/DC_ROM.vhd
-../design/huffman/AC_ROM.vhd
-../design/huffman/DC_CR_ROM.vhd
-../design/huffman/AC_CR_ROM.vhd
-../design/huffman/Huffman.vhd
+../design/huffman/DoubleFifo.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/huffman/DC_ROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/huffman/AC_ROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/huffman/DC_CR_ROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/huffman/AC_CR_ROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+../design/huffman/Huffman.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # bytestuffer
-../design/bytestuffer.vhd
+../design/bytestuffer/ByteStuffer.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # control
-../design/ctrlsm.vhd
+../design/control/CtrlSM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # HostIF
-../design/hostif.vhd
+../design/hostif/HostIF.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # IRamIF
-../design/iramif.vhd
+../design/iramif/IRAMIF.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # jfifgen
-../design/JFIFGen/HeaderRAM.vhd
-../design/JFIFGen/JFIFGen.vhd
+../design/JFIFGen/HeaderRAM.v | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvlog
+../design/JFIFGen/JFIFGen.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # outmux
-../design/outmux.vhd
+../design/outmux/OutMux.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # top
-../design/jpegenc.vhd
+../design/top/JpegEnc.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # testbench
-vhdl/RAMSIM.VHD
-vhdl/MDCTTB_PKG.vhd
-vhdl/GPL_V2_Image_pkg.vhd
-vhdl/ClkGen.vhd
-vhdl/HostBFM.vhd
-vhdl/JPEG_TB.VHD
+vhdl/RAMSIM.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+vhdl/MDCTTB_PKG.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+vhdl/GPL_V2_Image_pkg.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+vhdl/ClkGen.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+vhdl/HostBFM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
+vhdl/JPEG_TB.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
