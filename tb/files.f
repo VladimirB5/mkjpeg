@@ -71,6 +71,7 @@ vhdl/DCT_TROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --20
 
 # jfifgen
 ../design/JFIFGen/HeaderRAM.v | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvlog
+#../design/JFIFGen/HeaderRAM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 ../design/JFIFGen/JFIFGen.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # outmux
