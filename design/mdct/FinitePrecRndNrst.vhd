@@ -40,7 +40,9 @@ architecture RTL of FinitePrecRndNrst is
 
  begin
    sign <= datain(C_IN_SZ-1);
-   rc_val <= (C_FRAC_SZ - 1 => '1', others => '0');
+   rc_val(C_IN_SZ-1 downto C_FRAC_SZ) <= (others => '0');
+   rc_val(C_FRAC_SZ-1) <= '1';
+   rc_val(C_FRAC_SZ - 2 downto 0) <= (others => '0');
 
    reg1 : PROCESS (CLK, RST)
     BEGIN
@@ -98,10 +100,12 @@ architecture RTL of FinitePrecRndNrst is
                -- Saturation
                if sign_d1 = '1' then
                    -- Minimum + 1
-                   data_rs <= (C_OUT_SZ-1 => '1', others => '0');
+                   data_rs(C_OUT_SZ-1) <= '1';
+                   data_rs(C_OUT_SZ-2 downto 0) <= (others => '0');
                else
                    -- Maximum positive value
-                   data_rs <= (C_OUT_SZ-1 => '0', others => '1');
+                   data_rs(C_OUT_SZ-1) <= '0';
+                   data_rs(C_OUT_SZ-2 downto 0) <= (others => '1');
                end if;
            else
                data_rs <= data_round(C_OUT_SZ-1 downto 0);
