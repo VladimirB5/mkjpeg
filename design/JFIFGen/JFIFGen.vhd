@@ -103,7 +103,7 @@ architecture RTL of JFIFGen is
   signal eoi_wr       : std_logic;
   signal eoi_wr_d1    : std_logic;
   
-  component HeaderRam is
+  component HeaderRamStatic is
   port
   (
     d                 : in  STD_LOGIC_VECTOR(7 downto 0);
@@ -124,7 +124,7 @@ begin
   -------------------------------------------------------------------
   -- Header RAM
   -------------------------------------------------------------------
-  U_Header_RAM : HeaderRam
+  U_Header_RAM : HeaderRamStatic
   port map
   (      
         d           => hr_data,
