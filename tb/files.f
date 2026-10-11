@@ -18,7 +18,8 @@ vhdl/DCT_TROM.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --20
 ../design/BufFifo/BUF_FIFO.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 
 # fdct
-../design/mdct/FinitePrecRndNrst.v | - | - | xvlog
+#../design/mdct/FinitePrecRndNrst.v | - | - | xvlog
+../design/mdct/FinitePrecRndNrst.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 ../design/mdct/MDCT_PKG.vhd | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 ../design/mdct/ROMO.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
 ../design/mdct/ROME.VHD | ghdl -a --std=08 -fsynopsys | nvc --std=2008 -a | xvhdl --2008
