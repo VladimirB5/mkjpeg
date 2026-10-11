@@ -37,11 +37,11 @@ begin
 	return RAM;
 end function;
 
---SIGNAL ram_block : RamType := InitRamFromFile("../design/jfifgen/header.hex");
-SIGNAL ram_block : RamType;
-attribute ram_init_file : string;
-attribute ram_init_file of ram_block :
-signal is "./src/jpg/JFIFGen/header.mif";
+SIGNAL ram_block : RamType := InitRamFromFile("../design/JFIFGen/header.hex");
+--SIGNAL ram_block : RamType;
+--attribute ram_init_file : string;
+--attribute ram_init_file of ram_block :
+--signal is "../design/JFIFGen/header.mif";
 BEGIN
 	PROCESS (clk)
 	BEGIN
