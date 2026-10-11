@@ -77,6 +77,7 @@ architecture TB of JPEG_TB is
   signal iram_fifo_afull   : std_logic;
   signal outif_almost_full : std_logic;
   signal count1            : unsigned(15 downto 0);
+  signal stop_sim          : boolean := false;
 ------------------------------
 -- architecture begin
 ------------------------------       
@@ -92,7 +93,8 @@ begin
 	port map
   (
      CLK            => CLK,                                              
-     RST            => RST
+     RST            => RST,
+     stop           => stop_sim
 	);
   
   ------------------------------
@@ -201,7 +203,7 @@ begin
     
     file_close(f_capture);
     file_close(f_capture_bin);
-  
+    stop_sim <= true;
     wait;  
   end process;
 

@@ -25,7 +25,8 @@ library ieee;
 entity ClkGen is
 	port (
 	     CLK                             : out  std_logic;
-	     RST                             : out  std_logic
+	     RST                             : out  std_logic;
+	     stop                            : in   boolean
 	     );
 end entity ClkGen;
 
@@ -53,6 +54,9 @@ begin
 		wait for CLOCK_PERIOD/2;
 		clk_s <= '1';
 		wait for CLOCK_PERIOD/2;
+		if stop = true then
+		  wait;
+		end if;
 	end process clk_gen;
   
 	CLK <= clk_s;
