@@ -121,7 +121,7 @@ package body GPL_V2_Image_Pkg is
     variable L : Line;  -- access type
     variable W : String(1 to 3) := (others => ' ');  
   begin
-    IEEE.Std_Logic_Textio.WRITE(L, in_image);
+    IEEE.std_logic_1164.WRITE(L, in_image);
     W(L.all'range) := L.all;
     Deallocate(L);
     return W;
@@ -141,7 +141,7 @@ package body GPL_V2_Image_Pkg is
     variable L : Line;  -- access type
     variable W : String(1 to In_Image'length) := (others => ' ');  
   begin
-     IEEE.Std_Logic_TextIO.WRITE(L, In_Image);
+     IEEE.std_logic_1164.WRITE(L, In_Image);
      W(L.all'range) := L.all;
      Deallocate(L);
      return W;

@@ -55,7 +55,7 @@ architecture RTL of SUB_RAMZ_LUT is
   --                          STD_LOGIC_VECTOR(RAMDATA_W-1 downto 0);
   
   impure function InitRamFromFile (RamFileName : in string) return mem_type is 
-		FILE RamFile : text is in RamFileName; 
+		FILE RamFile : text is RamFileName;
 		variable RamFileLine : line; 
 		variable RAM : mem_type; 
 	begin 
