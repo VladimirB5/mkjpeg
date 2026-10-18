@@ -27,7 +27,7 @@ use IEEE.NUMERIC_STD.all;
 use IEEE.std_logic_textio.all;
 
 library std;
-use std.textio.all;	
+--use std.textio.all;
   
   
 entity SUB_RAMZ_LUT is  
@@ -54,24 +54,25 @@ architecture RTL of SUB_RAMZ_LUT is
 --type mem_type is array (( 1296*8)-1 downto 0) of --/*1296*8*/
   --                          STD_LOGIC_VECTOR(RAMDATA_W-1 downto 0);
   
-  impure function InitRamFromFile (RamFileName : in string) return mem_type is 
-		FILE RamFile : text is RamFileName;
-		variable RamFileLine : line; 
-		variable RAM : mem_type; 
-	begin 
-		for I in 0 to (2**RAMADDR_W)-1 loop 
-			readline (RamFile, RamFileLine); 
-			--Write (RamFileLine, I * 8);
-			hread(RamFileLine, RAM(I));
-			
-			
-			--write(   (I * 8),RamFileLine );
-			--read (RamFileLine, RAM(I), LEFT, 10); 
-		end loop; 
-		return RAM; 
+  impure function InitRamFromFile return mem_type is
+       --FILE RamFile : text is RamFileName;
+       --variable RamFileLine : line;
+       variable RAM : mem_type;
+    begin
+        for I in 0 to (2**RAMADDR_W)-1 loop
+          RAM(i) := std_logic_vector(shift_left(to_unsigned(i, RAMDATA_W), 3));
+          -- data can be generated, instead of load from file
+          --readline (RamFile, RamFileLine);
+          --Write (RamFileLine, I * 8);
+          --hread(RamFileLine, RAM(I));
+
+          --write(   (I * 8),RamFileLine );
+          --read (RamFileLine, RAM(I), LEFT, 10);
+        end loop;
+      return RAM;
 	end function; 
 							 
-  signal mem                    : mem_type := InitRamFromFile("../design/BufFifo/counter_8.txt") ;
+  signal mem                    : mem_type := InitRamFromFile;
   signal read_addr              : STD_LOGIC_VECTOR(RAMADDR_W-1 downto 0);
   
   --attribute ram_style: string;
